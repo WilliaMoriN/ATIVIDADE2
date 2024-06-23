@@ -200,11 +200,14 @@ public class Tela_Principal extends javax.swing.JFrame {
               
           }
           if(ProdutoDAO.CadastrarProduto(p)){
-              //JOptionPane.showMessageDialog(null, "Produto Cadastrado!!!");
+              JOptionPane.showMessageDialog(null, "Produto Cadastrado!!!\n" + 
+                      "Nome do Produto: " + p.getNome()+ "\n" +
+                      "Valor do Produto: R$" + p.getValor() + "\n" +
+                      "Status: " + p.getStatus());
           }
         }catch(SQLException se){
-            //JOptionPane.showMessageDialog(null, "Erro ao cadastrar...");
-            //System.out.println(se);
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar...");
+            System.out.println(se);
         }
     }//GEN-LAST:event_CadastrarActionPerformed
 
