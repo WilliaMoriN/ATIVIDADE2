@@ -14,7 +14,7 @@ public class Conector {
     public void conectar() throws SQLException{
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost/uc11","root","root");
+           conexao = DriverManager.getConnection("jdbc:mysql://localhost/uc11","root","root");
             System.out.println("SUCESSO DE CONEXÃO!");
         }catch(ClassNotFoundException e){
             System.out.println("Falha ao carregar a classe de conexão!");
