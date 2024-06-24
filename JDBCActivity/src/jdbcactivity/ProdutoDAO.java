@@ -2,7 +2,10 @@ package jdbcactivity;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import java.sql.ResultSet;
 
 public class ProdutoDAO {
     public static boolean CadastrarProduto(Produto p) throws SQLException{
@@ -21,5 +24,28 @@ public class ProdutoDAO {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar registro no banco de dados" + se);
             return false;
         }
+    }
+    
+    public static List<Produto> listarTabela(){
+        List<Produto> Listar = new ArrayList<Produto>();
+        try{
+            Conector conexao = new Conector();
+            conexao.conectar();
+            String sql = "SELECT * FROM Produtos;";
+            PreparedStatement consulta = conexao.getConexao().prepareStatement(sql);
+            ResultSet resposta = consulta.executeQuery();
+            while(resposta.next()){
+                Produto p = new Produto();
+                p.setId(resposta.getInt("id"));
+                p.setNome(resposta.getString("Nome"));
+                p.setValor(resposta.getDouble("Valor"));
+                p.setStatus(resposta.getString("Status"));
+                
+                Listar.add(p);
+            }
+        }catch(SQLException se){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao mostrar os dados na lista..." + se);
+        }
+        return Listar;
     }
 }
