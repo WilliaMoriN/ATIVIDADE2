@@ -49,7 +49,7 @@ public class ProdutoDAO {
         return Listar;
     }
     
-    public static boolean atualizar(Produto p){
+    public static boolean AtualizarProduto(Produto p){
         try{
             Conector conexao = new Conector();
             conexao.conectar();
@@ -66,5 +66,28 @@ public class ProdutoDAO {
             System.out.println("Erro ao buscar o registro do banco de dados");
             return false;
         }
+    }
+    
+    public static List<Produto> listarProdutoVendido(){
+        List<Produto> ListarPVendido = new ArrayList<Produto>();
+        try{
+            Conector conexao = new Conector();
+            conexao.conectar();
+            String sql = "SELECT * FROM Produtos WHERE status = A Venda";
+            PreparedStatement consulta = conexao.getConexao().prepareStatement(sql);
+            ResultSet resposta = consulta.executeQuery();
+            while(resposta.next()){
+                Produto p = new Produto();
+                p.setId(resposta.getInt("id"));
+                p.setNome(resposta.getString("Nome"));
+                p.setValor(resposta.getDouble("Valor"));
+                p.setStatus(resposta.getString("Status"));
+                
+                ListarPVendido.add(p);
+            }
+        }catch(SQLException se){
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao mostrar os dados na lista..." + se);
+        }
+        return ListarPVendido;
     }
 }
