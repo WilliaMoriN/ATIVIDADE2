@@ -264,7 +264,8 @@ public class Tela_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ListagemActionPerformed
 
     private void consultar_vendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_vendasActionPerformed
-        // TODO add your handling code here:
+        Tela_ListarVendas TLV = new Tela_ListarVendas();
+        TLV.setVisible(true);
     }//GEN-LAST:event_consultar_vendasActionPerformed
 
     

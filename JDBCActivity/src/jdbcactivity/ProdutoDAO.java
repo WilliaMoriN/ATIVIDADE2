@@ -53,7 +53,7 @@ public class ProdutoDAO {
         try{
             Conector conexao = new Conector();
             conexao.conectar();
-            String sql = "UPDATE produtos SET nome=?, valor=?, status=? WHERE id=?;";
+            String sql = "UPDATE Produtos SET nome=?, valor=?, status=? WHERE id=?;";
             PreparedStatement query = conexao.getConexao().prepareStatement(sql);
             query.setString(1, p.getNome());
             query.setDouble(2, p.getValor());
@@ -73,7 +73,7 @@ public class ProdutoDAO {
         try{
             Conector conexao = new Conector();
             conexao.conectar();
-            String sql = "SELECT * FROM Produtos WHERE status = A Venda";
+            String sql = "Select * From Produtos where Status = \"Vendido\";";
             PreparedStatement consulta = conexao.getConexao().prepareStatement(sql);
             ResultSet resposta = consulta.executeQuery();
             while(resposta.next()){
