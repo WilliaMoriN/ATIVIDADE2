@@ -48,4 +48,23 @@ public class ProdutoDAO {
         }
         return Listar;
     }
+    
+    public static boolean atualizar(Produto p){
+        try{
+            Conector conexao = new Conector();
+            conexao.conectar();
+            String sql = "UPDATE produtos SET nome=?, valor=?, status=? WHERE id=?;";
+            PreparedStatement query = conexao.getConexao().prepareStatement(sql);
+            query.setString(1, p.getNome());
+            query.setDouble(2, p.getValor());
+            query.setString(3, p.getStatus());
+            query.setInt(4, p.getId());
+            query.execute();
+            conexao.desconectar();            
+            return true;
+        }catch(SQLException e){
+            System.out.println("Erro ao buscar o registro do banco de dados");
+            return false;
+        }
+    }
 }
