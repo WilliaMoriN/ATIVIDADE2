@@ -25,6 +25,7 @@ public class Tela_Principal extends javax.swing.JFrame {
         Cadastrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Listagem = new javax.swing.JButton();
+        consultar_vendas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +143,17 @@ public class Tela_Principal extends javax.swing.JFrame {
             }
         });
 
+        consultar_vendas.setBackground(new java.awt.Color(0, 153, 255));
+        consultar_vendas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        consultar_vendas.setForeground(new java.awt.Color(0, 0, 0));
+        consultar_vendas.setText("Consultar Vendas");
+        consultar_vendas.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 153, 153), new java.awt.Color(0, 153, 153)));
+        consultar_vendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultar_vendasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,23 +161,26 @@ public class Tela_Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(21, 21, 21))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Cadastrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(Listagem))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(Cadastrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Listagem)
+                        .addGap(18, 18, 18)
+                        .addComponent(consultar_vendas))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(21, 21, 21))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(168, 168, 168))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +195,8 @@ public class Tela_Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cadastrar)
                     .addComponent(jButton2)
-                    .addComponent(Listagem))
+                    .addComponent(Listagem)
+                    .addComponent(consultar_vendas))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -247,6 +263,11 @@ public class Tela_Principal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_ListagemActionPerformed
 
+    private void consultar_vendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultar_vendasActionPerformed
+        Tela_ListarVendas TLV = new Tela_ListarVendas();
+        TLV.setVisible(true);
+    }//GEN-LAST:event_consultar_vendasActionPerformed
+
     
     
     
@@ -302,6 +323,7 @@ public class Tela_Principal extends javax.swing.JFrame {
     private javax.swing.JButton Listagem;
     private javax.swing.JTextField campo_nome;
     private javax.swing.JTextField campo_valor;
+    private javax.swing.JButton consultar_vendas;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
