@@ -1,12 +1,16 @@
 package jdbcactivity;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Tela_Listagem extends javax.swing.JFrame {
+    
     public Tela_Listagem() {
         initComponents();
     }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -15,6 +19,7 @@ public class Tela_Listagem extends javax.swing.JFrame {
         Scroll_Table = new javax.swing.JScrollPane();
         Tabela = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        Vender_Produto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,14 +40,27 @@ public class Tela_Listagem extends javax.swing.JFrame {
             }
         });
 
+        Vender_Produto.setBackground(new java.awt.Color(102, 255, 102));
+        Vender_Produto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Vender_Produto.setForeground(new java.awt.Color(0, 0, 0));
+        Vender_Produto.setText("Vender Produto");
+        Vender_Produto.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 153, 0), new java.awt.Color(0, 153, 0)));
+        Vender_Produto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Vender_ProdutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Scroll_Table, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(206, 206, 206)
+                .addGap(136, 136, 136)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Vender_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -50,7 +68,9 @@ public class Tela_Listagem extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Scroll_Table, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(Vender_Produto))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -73,6 +93,12 @@ public class Tela_Listagem extends javax.swing.JFrame {
         TP.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Vender_ProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vender_ProdutoActionPerformed
+        int linhaSelecionada = getPosicao();
+        Tela_Venda TV = new Tela_Venda(linhaSelecionada);
+        TV.setVisible(true);
+    }//GEN-LAST:event_Vender_ProdutoActionPerformed
     
     private DefaultTableModel montarTabela(){
         String[] colunas = {"Id", "Nome", "Valor", "Status"};
@@ -92,7 +118,13 @@ public class Tela_Listagem extends javax.swing.JFrame {
         return tabela;
     }
     
-    
+    private int getPosicao() {
+        int posicao = Tabela.getSelectedRow();
+        if(posicao <= -1) {
+            JOptionPane.showMessageDialog(null, "Selecione um item para atualizar venda.");
+        }     
+        return Integer.parseInt( (String) Tabela.getValueAt(posicao, 0) );
+    }
     
     
     
@@ -142,6 +174,7 @@ public class Tela_Listagem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Scroll_Table;
     private javax.swing.JTable Tabela;
+    private javax.swing.JButton Vender_Produto;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

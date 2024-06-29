@@ -90,4 +90,26 @@ public class ProdutoDAO {
         }
         return ListarPVendido;
     }
+    
+    public static Produto buscarPorID(int id){
+       Produto p = new Produto();
+       try{
+           Conector conexao = new Conector();
+           conexao.conectar();
+           String sql = "SELECT * FROM Produtos WHERE id=?";
+           PreparedStatement consulta = conexao.getConexao().prepareStatement(sql);
+           consulta.setInt(1, id); 
+           ResultSet resposta = consulta.executeQuery();
+           if (resposta.next()) {
+               p.setId(resposta.getInt("id"));
+               p.setNome(resposta.getString("nome"));
+               p.setValor(resposta.getDouble("valor"));
+               p.setStatus(resposta.getString("status"));
+           }
+           conexao.desconectar();
+       }catch(SQLException se){
+           System.out.println("Erro ao buscar o registro " + id + " do banco de dados");
+       }
+       return p;
+    }
 }
